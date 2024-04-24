@@ -17,10 +17,12 @@ const createTask = async (task) => {
 };
 
 const deleteTask = async (id) => {
-  const removedTask =  await connection.execute();
+  const removedTask =  await connection.execute('delete from tasks where id = ?', [id]);
+  return removedTask;
 }
 
 module.exports = {
   getAll,
   createTask,
+  deleteTask,
 };
